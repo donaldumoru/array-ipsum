@@ -1,3 +1,5 @@
+import { populateUserArray, userData } from './data.mjs';
+
 /**
  * generate random words
  *
@@ -29,9 +31,40 @@ const generateRandomWords = function (
   });
 };
 
-// FETCH SHOULD BE DONE ONCE... MAYBE 100... WHEN ARRAY SIZE IS DOWN TO MAYBE 20, WE FETCH AGAIN
-const generateEmailAddresses = function (arr, numUsers) {
-  return arr;
+/**
+ * generate emails || usernames based on the type param and inserts generated
+ * array as HTML into the DOM
+ *
+ * @param {number} - amount of strings to generate (length of the output array)
+ * @param {string} [type = 'email']  - type of string to generate -> default to 'email address'
+ *                                     if no parameter is passed
+ * @returns {void}
+ */
+
+const body = document.querySelector('body');
+
+const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
+  const userArray = await populateUserArray(userData, num);
+
+  let toRender;
+
+  if (type === 'email') {
+    toRender = userArray.map(user => user?.email);
+  } else {
+    toRender = userArray.map(user => user?.login?.username);
+  }
+
+  console.log(toRender);
+
+  let text = `<div>
+  <pre>
+    <code>${JSON.stringify(toRender)}</code>
+  </pre>
+</div>`;
+
+  body.insertAdjacentHTML('afterbegin', text);
 };
 
-export { generateRandomWords };
+generateEmailAddressesOrUsernames(10);
+
+export { generateRandomWords, generateEmailAddressesOrUsernames };
