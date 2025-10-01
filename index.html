@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Ipsum</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        getRandomWords,
+        randomWordsUrl,
+        getUsers,
+        userObjUrl,
+      } from '/modules/fetch.mjs';
+      import { generateRandomWords } from '/modules/strings.mjs';
+
+      const data = await getUsers(userObjUrl);
+
+      console.log(data.results);
+
+      /****
+       *
+       *
+       ****/
+      const randomWords = await getRandomWords(randomWordsUrl, 10, 9);
+
+      console.log(
+        generateRandomWords(
+          randomWords
+          /**if called with no second parameter, it defaults to lowercase*/
+        )
+      );
+      /****
+       *
+       *
+       ****/
+    </script>
+  </body>
+</html>
