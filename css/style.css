@@ -277,6 +277,12 @@ article p {
   display: none;
 }
 
+.words-option {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 label[for='word-length'] {
   width: min-content;
 }
