@@ -33,46 +33,68 @@ const randomWords = await fetchRandomWords(randomWordsUrl, 10, 9);
  * @function fetchUserObjects
  * @returns {Promise<Object>} A promise that resolves to the parsed user data object.
  */
-const fetchUserObjects = async function () {
-  if (!sessionStorage.getItem('users')) {
-    const data = await fetchUsers(userObjUrl);
 
-    let stringifyData = JSON.stringify(data);
-    console.log('fetch', stringifyData);
+const fetchUserObjects = async function (numNeeded = 100) {
+  if (!sessionStorage.getItem('users')) {
+    const fetchedData = await fetchUsers(userObjUrl);
+
+    //LOGS
+    console.log('data', fetchedData);
+    console.log('fecthed data length', fetchedData.length);
+
+    let stringifyData = JSON.stringify(fetchedData);
     sessionStorage.setItem('users', stringifyData);
   }
 
   let getUserData = sessionStorage.getItem('users');
-  const data = JSON.parse(getUserData);
 
-  return data;
+  const storedData = JSON.parse(getUserData);
+
+  return storedData;
 };
 
 const userData = await fetchUserObjects();
 
 /**
- * Populates a subset of user objects from 'userData'
- * If the array has fewer than or equal to 20 users, it clears
- * sessionStorage, refetches the user data, and refills the array.
+ * Creates a closure around a user array and a position counter.
  *
- * @async
- * @function populateUserArray
- * @param {Object[]} arr - The array of user objects to select from.
- * @param {number} numSelected - The number of users to select from the array.
- * @returns {Promise<Object[]>} A promise that resolves to an array of selected user objects.
+ * Each call to the returned function provides the next `numSelected` users.
+ * When the array is exhausted, it fetches a new set of users and resets
+ * the position counter
+ *
+ * @param {User[]} arr - The initial array of user objects.
+ * @returns {(numSelected: number) => Promise<User[]>}
+ * async function that, when called with a number, resolves to an array
+ * containing that many user objects.
+ *
  */
-const populateUserArray = async function (arr, numSelected) {
-  if (arr.length <= 20) {
-    sessionStorage.removeItem('users');
-    arr = await fetchUserObjects();
-    console.log('refill', sessionStorage.getItem('users'));
-  }
+const populateUserArray = function (arr) {
+  let position = 0;
 
-  const selected = arr.splice(0, numSelected);
+  return async function (numSelected) {
+    let remaining = arr.length - position;
 
-  console.log(selected);
+    if (remaining < numSelected) {
+      sessionStorage.removeItem('users');
 
-  return selected;
+      arr = await fetchUserObjects();
+
+      position = 0;
+      console.log('fetching again');
+    }
+
+    // get the number of items user requests for by slicing array from position to position + amount requested
+    // slice method---> to prevent constant mutation of the array
+    const selected = arr.slice(position, position + numSelected);
+
+    // update position to keep track of how many items have been requested from the array
+    position += numSelected;
+
+    // console.log(position, selected);
+
+    // console.log('position:', position);
+    return selected;
+  };
 };
 
 export { populateUserArray, userData };

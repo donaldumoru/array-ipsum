@@ -43,8 +43,10 @@ const generateRandomWords = function (
 
 const body = document.querySelector('body');
 
+const getSelected = populateUserArray(userData);
+
 const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
-  const userArray = await populateUserArray(userData, num);
+  const userArray = await getSelected(num);
 
   let toRender;
 
@@ -54,17 +56,16 @@ const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
     toRender = userArray.map(user => user?.login?.username);
   }
 
-  console.log(toRender);
-
   let text = `<div>
-  <pre>
-    <code>${JSON.stringify(toRender)}</code>
-  </pre>
-</div>`;
+    <pre>
+      <code>${JSON.stringify(toRender)}</code>
+    </pre>
+  </div>`;
 
   body.insertAdjacentHTML('afterbegin', text);
 };
 
-generateEmailAddressesOrUsernames(10);
+// call this to generate strings
+generateEmailAddressesOrUsernames(5);
 
 export { generateRandomWords, generateEmailAddressesOrUsernames };
