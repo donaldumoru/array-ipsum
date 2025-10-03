@@ -11,6 +11,8 @@
   --int-and-const: rgb(197, 134, 192);
   --objects: #d33848;
   --strings: #d7ba7d;
+  --blue: blue;
+  --radius: 5px;
 }
 
 body {
@@ -67,7 +69,7 @@ svg {
 main {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .description {
@@ -79,7 +81,7 @@ main {
   color: var(--color-primary);
 }
 
-.description h3 {
+h3 {
   margin-top: 30px;
   font-size: 2rem;
   font-weight: 400;
@@ -104,13 +106,99 @@ main {
 .app-container {
   margin: 100px 7rem;
   background-color: rgb(231, 231, 231);
+  border-radius: var(--radius);
 }
 
+.generate-container {
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.options-container {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5rem;
+}
+
+.code-display {
+  background-color: var(--color-primary);
+  color: var(--strings);
+  margin: 5rem 2rem;
+  border-radius: var(--radius);
+}
+
+.copy-btn {
+  position: sticky;
+  top: 15px;
+  /* right: 2rem; */
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+pre {
+  /* max-width: 100%; */
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  max-height: 60vh;
+  overflow: auto;
+  position: relative;
+}
+
+pre code {
+  white-space: inherit;
+  display: block;
+  line-height: 2.5;
+  margin-top: 2rem;
+}
+
+/************FORM FIELDS*************/
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.option-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+}
+
+.generate-btn {
+  width: fit-content;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.input--amount {
+  max-width: 70px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.input--amount::-webkit-inner-spin-button,
+.input--amount::-webkit-outer-spin-button {
+  transform: scale(1.5); /* try 1.2–2 */
+  transform-origin: center right; /* keep them aligned */
+}
 /****RADIO BUTTONS*****/
 
 .radio2 {
   position: relative;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .radio2 input {
@@ -125,7 +213,7 @@ main {
   padding-left: 30px;
   margin: 7px;
   position: relative;
-  font-size: 14px;
+  font-size: 1.5rem;
   color: #000;
   cursor: pointer;
   transition: color 0.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -157,6 +245,30 @@ main {
 .radio2 label:hover span {
   transform: translateY(-50%) scale(1.1);
   border-color: var(--color-primary);
+}
+
+/********CREDITS************/
+.credit-link {
+  color: var(--blue);
+}
+
+article {
+  margin: 200px 7rem;
+  padding-bottom: 100px;
+}
+
+article h3 {
+  padding-top: 30px;
+  border-top: 1px solid rgb(188, 187, 187);
+}
+
+article p {
+  margin-top: 20px;
+  font-size: 1.4rem;
+}
+
+.hide {
+  display: none;
 }
 
 /*************MEDIA QUERIES***************/

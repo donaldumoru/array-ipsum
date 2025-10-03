@@ -51,6 +51,6 @@ const makeArray = function () {
 const numbersArray = makeArray();
 
 // call this to generate numbers
-console.log(numbersArray(12, 1, 20));
+// console.log(numbersArray(12, 1, 20));
 
 export { numbersArray };

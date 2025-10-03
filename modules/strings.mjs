@@ -1,4 +1,5 @@
 import { populateUserArray, userData } from './data.mjs';
+const appContainer = document.querySelector('.code-display');
 
 /**
  * generate random words
@@ -12,7 +13,7 @@ const generateRandomWords = function (
   arr,
   stringTransformOption = 'lowercase'
 ) {
-  return arr.map(str => {
+  const toRender = arr.map(str => {
     switch (stringTransformOption) {
       case 'lowercase':
         str = str.toLowerCase();
@@ -29,6 +30,15 @@ const generateRandomWords = function (
 
     return str;
   });
+
+  let text = `<pre>
+  <button class = "copy-btn">copy</button>
+  <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
+    </pre>`;
+
+  appContainer.innerHTML = '';
+
+  appContainer.insertAdjacentHTML('beforeend', text);
 };
 
 /**
@@ -40,8 +50,6 @@ const generateRandomWords = function (
  *                                     if no parameter is passed
  * @returns {void}
  */
-
-const appContainer = document.querySelector('.app-container');
 
 const getSelected = populateUserArray(userData);
 
@@ -56,11 +64,13 @@ const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
     toRender = userArray.map(user => user?.login?.username);
   }
 
-  let text = `<div>
+  let text = `
     <pre>
-      <code>${JSON.stringify(toRender)}</code>
-    </pre>
-  </div>`;
+      <button class = "copy-btn">copy</button>
+      <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
+    </pre>`;
+
+  appContainer.innerHTML = '';
 
   appContainer.insertAdjacentHTML('beforeend', text);
 };

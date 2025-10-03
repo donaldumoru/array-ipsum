@@ -15,9 +15,9 @@ import {
  *
  *
  ****/
-const randomWords = await fetchRandomWords(randomWordsUrl, 10, 4);
+// const randomWords = await fetchRandomWords(randomWordsUrl, 10, 4);
 
-console.log(randomWords);
+// console.log(randomWords);
 
 // console.log(
 //   generateRandomWords(
@@ -51,6 +51,8 @@ const fetchUserObjects = async function (numNeeded = 100) {
   let getUserData = sessionStorage.getItem('users');
 
   const storedData = JSON.parse(getUserData);
+
+  console.log(storedData);
 
   return storedData;
 };

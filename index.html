@@ -13,7 +13,10 @@
         generateEmailAddressesOrUsernames,
       } from '/modules/strings.mjs';
       import { numbersArray } from '/modules/integers.mjs';
-      import {} from '';
+      import { renderOptions } from '/modules/render-options.mjs';
+      import { renderWords } from '/modules/ui/generate-array.mjs';
+
+      // renderOptions(options);
 
       // generateEmailAddressesOrUsernames(5);
     </script>
@@ -52,75 +55,223 @@
           <strong>Generate</strong>, then <strong>Copy</strong> the result and
           <strong>Paste</strong> into your code.
         </p>
+      </section>
+    </main>
 
-        <!-- <h3 id="credits">Credits & Disclaimer</h3>
+    <section class="app-container">
+      <div class="options-container">
+        <div class="radio-container">
+          <div class="radio2">
+            <div class="radio-button">
+              <input
+                data-identifier="words"
+                name="radio2-group"
+                id="radio2-input1"
+                type="radio"
+                checked="true"
+              />
+              <label for="radio2-input1">
+                <span></span>
+                words
+              </label>
+            </div>
+
+            <div class="radio-button">
+              <input
+                data-identifier="emails"
+                name="radio2-group"
+                id="radio2-input2"
+                type="radio"
+              />
+              <label for="radio2-input2">
+                <span></span>
+                emails
+              </label>
+            </div>
+            <div class="radio-button">
+              <input
+                data-identifier="usernames"
+                name="radio2-group"
+                id="radio2-input3"
+                type="radio"
+              />
+              <label for="radio2-input3">
+                <span></span>
+                usernames
+              </label>
+            </div>
+            <!-- <div class="radio-button">
+              <input name="radio2-group" id="radio2-input4" type="radio" />
+              <label for="radio2-input4">
+                <span></span>
+                numbers
+              </label>
+            </div>
+            <div class="radio-button">
+              <input name="radio2-group" id="radio2-input5" type="radio" />
+              <label for="radio2-input5">
+                <span></span>
+                objects
+              </label>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="generate-container">
+          <div class="option-container" data-identifier="words">
+            <!-- <p>Words</p> -->
+
+            <div class="option-wrapper">
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="word-amount"
+                  id="word-amount"
+                  type="number"
+                  value="10"
+                  min="1"
+                  max="100"
+                />
+                <label for="word-amount">
+                  <span></span>
+                  words
+                </label>
+              </div>
+
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="word-length"
+                  id="word-length"
+                  type="number"
+                  value="3"
+                  min="3"
+                  max="9"
+                />
+                <label for="word-length">
+                  <span></span>
+                  word length
+                </label>
+              </div>
+
+              <div class="words-option">
+                <div class="radio-button">
+                  <input
+                    name="word-group"
+                    id="word-input1"
+                    type="radio"
+                    checked="true"
+                  />
+                  <label for="word-input1">
+                    <span></span>
+                    lowercase
+                  </label>
+                </div>
+
+                <div class="radio-button">
+                  <input name="word-group" id="word-input1" type="radio" />
+                  <label for="word-input1">
+                    <span></span>
+                    uppercase
+                  </label>
+                </div>
+
+                <div class="radio-button">
+                  <input name="word-group" id="word-input1" type="radio" />
+                  <label for="word-input1">
+                    <span></span>
+                    capitalize
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-container hide" data-identifier="emails">
+            <div class="option-wrapper">
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="email-amount"
+                  id="email-amount"
+                  type="number"
+                  value="1"
+                />
+                <label for="email-amount">
+                  <span></span>
+                  emails
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-container hide" data-identifier="usernames">
+            <div class="option-wrapper">
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="usernames-amount"
+                  id="usernames-amount"
+                  type="number"
+                  value="1"
+                />
+                <label for="usernames-amount">
+                  <span></span>
+                  usernames
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="option-container">
+            <div class="option-wrapper">
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="usernames-amount"
+                  id="usernames-amount"
+                  type="number"
+                  value="1"
+                />
+                <label for="usernames-amount">
+                  <span></span>
+                  numbers
+                </label>
+              </div>
+            </div>
+            <button>generate</button>
+          </div> -->
+
+          <button class="generate-btn" data-identifier="words">generate</button>
+        </div>
+      </div>
+
+      <section class="code-display"></section>
+
+      <article>
+        <h3 id="credits">Credits & Disclaimer</h3>
         <p>
-          Array Ipsum does not create or own the content it generates. Names and
+          arrayIpsum does not create or own the content it generates. Names and
           user data are provided by the
-          <a href="https://randomuser.me" target="_blank" rel="noopener"
+          <a
+            class="credit-link"
+            href="https://randomuser.me"
+            target="_blank"
+            rel="noopener"
             >RandomUser API</a
           >, and random words are provided by the
           <a
+            class="credit-link"
             href="https://random-word-api.vercel.app"
             target="_blank"
             rel="noopener"
             >Random Word API</a
           >. All generated data is intended for testing, learning, and
           prototyping only.
-        </p> -->
-      </section>
-    </main>
-
-    <section class="app-container">
-      <div class="radio-container">
-        <div class="radio2">
-          <div class="radio-button">
-            <input
-              name="radio2-group"
-              id="radio2-input1"
-              type="radio"
-              checked="true"
-            />
-            <label for="radio2-input1">
-              <span></span>
-              words
-            </label>
-          </div>
-
-          <div class="radio-button">
-            <input name="radio2-group" id="radio2-input2" type="radio" />
-            <label for="radio2-input2">
-              <span></span>
-              emails
-            </label>
-          </div>
-          <div class="radio-button">
-            <input name="radio2-group" id="radio2-input3" type="radio" />
-            <label for="radio2-input3">
-              <span></span>
-              usernames
-            </label>
-          </div>
-          <div class="radio-button">
-            <input name="radio2-group" id="radio2-input4" type="radio" />
-            <label for="radio2-input4">
-              <span></span>
-              numbers
-            </label>
-          </div>
-          <div class="radio-button">
-            <input name="radio2-group" id="radio2-input5" type="radio" />
-            <label for="radio2-input5">
-              <span></span>
-              objects
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div class="generate-container"></div>
+        </p>
+      </article>
     </section>
 
-    <!-- words emails usernames numbers objects -->
+    <footer></footer>
   </body>
 </html>
