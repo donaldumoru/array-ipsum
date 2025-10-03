@@ -31,8 +31,7 @@ const generateRandomWords = function (
     return str;
   });
 
-  let text = `<pre>
-  <button class = "copy-btn">copy</button>
+  let text = ` <button class = "copy-btn">copy</button> <pre>
   <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
     </pre>`;
 
@@ -65,8 +64,8 @@ const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
   }
 
   let text = `
+    <button class = "copy-btn">copy</button>
     <pre>
-      <button class = "copy-btn">copy</button>
       <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
     </pre>`;
 
