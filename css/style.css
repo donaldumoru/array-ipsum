@@ -290,4 +290,27 @@ article p {
   h3 {
     font-size: 1.5rem;
   }
+
+  .app-container {
+    margin: 100px 0;
+  }
+
+  .generate-container {
+    width: unset;
+  }
+
+  .options-container {
+    flex-direction: column;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .radio2 {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .generate-btn {
+    width: unset;
+  }
 }
