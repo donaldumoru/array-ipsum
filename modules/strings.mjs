@@ -1,5 +1,5 @@
 import { populateUserArray, userData } from './data.mjs';
-const appContainer = document.querySelector('.code-display');
+const preContainer = document.querySelector('.pre-container');
 
 /**
  * generate random words
@@ -31,13 +31,13 @@ const generateRandomWords = function (
     return str;
   });
 
-  let text = ` <button class = "copy-btn">copy</button> <pre>
+  let text = `<pre>
   <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
     </pre>`;
 
-  appContainer.innerHTML = '';
+  preContainer.innerHTML = '';
 
-  appContainer.insertAdjacentHTML('beforeend', text);
+  preContainer.insertAdjacentHTML('beforeend', text);
 };
 
 /**
@@ -64,14 +64,13 @@ const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
   }
 
   let text = `
-    <button class = "copy-btn">copy</button>
     <pre>
       <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
     </pre>`;
 
-  appContainer.innerHTML = '';
+  preContainer.innerHTML = '';
 
-  appContainer.insertAdjacentHTML('beforeend', text);
+  preContainer.insertAdjacentHTML('beforeend', text);
 };
 
 export { generateRandomWords, generateEmailAddressesOrUsernames };

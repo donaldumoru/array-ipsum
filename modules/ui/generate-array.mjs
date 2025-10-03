@@ -49,8 +49,12 @@ const selectTypeToGenerate = async function (e) {
 
   switch (type) {
     case 'words':
-      if (!wordsAmount.value || !wordLength.value) {
+      if (!wordsAmount.value) {
         wordsAmount.value = 10;
+      }
+
+      if (!wordLength.value) {
+        console.log('omo');
         wordLength.value = '';
       }
 

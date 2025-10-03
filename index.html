@@ -15,10 +15,9 @@
       import { numbersArray } from '/modules/integers.mjs';
       import { renderOptions } from '/modules/render-options.mjs';
       import { renderWords } from '/modules/ui/generate-array.mjs';
+      import { INIT_COPY_FN } from '/modules/ui/utils.mjs';
 
-      // renderOptions(options);
-
-      // generateEmailAddressesOrUsernames(5);
+      INIT_COPY_FN();
     </script>
 
     <header>
@@ -51,7 +50,7 @@
         <h3>Usage</h3>
 
         <p>
-          Pick a data type, choose how many items you need, click
+          Pick a category, choose how many items you need, click
           <strong>Generate</strong>, then <strong>Copy</strong> the result and
           <strong>Paste</strong> into your code.
         </p>
@@ -246,7 +245,11 @@
         </div>
       </div>
 
-      <section class="code-display"></section>
+      <section class="code-display">
+        <button class="copy-btn">copy</button>
+
+        <div class="pre-container"></div>
+      </section>
     </section>
 
     <article>
