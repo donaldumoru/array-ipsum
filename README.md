@@ -1,6 +1,6 @@
 # generate-array-with-dummy-data
 
-[Generate Array With Dummy Data page](https://arrayipsum.netlify.app)
+[arrayIpsum](https://arrayipsum.netlify.app)
 
 ## Features
 
