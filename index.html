@@ -8,8 +8,119 @@
   </head>
   <body>
     <script type="module">
-      import { generateRandomWords } from '/modules/strings.mjs';
+      import {
+        generateRandomWords,
+        generateEmailAddressesOrUsernames,
+      } from '/modules/strings.mjs';
       import { numbersArray } from '/modules/integers.mjs';
+      import {} from '';
+
+      // generateEmailAddressesOrUsernames(5);
     </script>
+
+    <header>
+      <nav>
+        <a href="">
+          <div><span>const</span> arrayIpsum</div>
+        </a>
+        <ul>
+          <a href="https://github.com/donaldumoru/array-ipsum" target="_blank">
+            <li><img src="assets/img/logo-github.svg" alt="github icon" /></li
+          ></a>
+
+          <a href="#credits">credits</a>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="description">
+        <p>
+          arrayIpsum is a simple, copy-and-paste generator for arrays of dummy
+          data; <span id="words-color">'words'</span>,
+          <span id="numbers-color">numbers</span>,
+          <span id="emails-color">'emails'</span>,
+          <span id="usernames-color">'usernames'</span>, and
+          <span id="objects-color">{small objects}</span>. It’s perfect for
+          learning and quick prototypes.
+        </p>
+
+        <h3>Usage</h3>
+
+        <p>
+          Pick a data type, choose how many items you need, click
+          <strong>Generate</strong>, then <strong>Copy</strong> the result and
+          <strong>Paste</strong> into your code.
+        </p>
+
+        <!-- <h3 id="credits">Credits & Disclaimer</h3>
+        <p>
+          Array Ipsum does not create or own the content it generates. Names and
+          user data are provided by the
+          <a href="https://randomuser.me" target="_blank" rel="noopener"
+            >RandomUser API</a
+          >, and random words are provided by the
+          <a
+            href="https://random-word-api.vercel.app"
+            target="_blank"
+            rel="noopener"
+            >Random Word API</a
+          >. All generated data is intended for testing, learning, and
+          prototyping only.
+        </p> -->
+      </section>
+    </main>
+
+    <section class="app-container">
+      <div class="radio-container">
+        <div class="radio2">
+          <div class="radio-button">
+            <input
+              name="radio2-group"
+              id="radio2-input1"
+              type="radio"
+              checked="true"
+            />
+            <label for="radio2-input1">
+              <span></span>
+              words
+            </label>
+          </div>
+
+          <div class="radio-button">
+            <input name="radio2-group" id="radio2-input2" type="radio" />
+            <label for="radio2-input2">
+              <span></span>
+              emails
+            </label>
+          </div>
+          <div class="radio-button">
+            <input name="radio2-group" id="radio2-input3" type="radio" />
+            <label for="radio2-input3">
+              <span></span>
+              usernames
+            </label>
+          </div>
+          <div class="radio-button">
+            <input name="radio2-group" id="radio2-input4" type="radio" />
+            <label for="radio2-input4">
+              <span></span>
+              numbers
+            </label>
+          </div>
+          <div class="radio-button">
+            <input name="radio2-group" id="radio2-input5" type="radio" />
+            <label for="radio2-input5">
+              <span></span>
+              objects
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="generate-container"></div>
+    </section>
+
+    <!-- words emails usernames numbers objects -->
   </body>
 </html>

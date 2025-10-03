@@ -41,7 +41,7 @@ const generateRandomWords = function (
  * @returns {void}
  */
 
-const body = document.querySelector('body');
+const appContainer = document.querySelector('.app-container');
 
 const getSelected = populateUserArray(userData);
 
@@ -62,10 +62,7 @@ const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
     </pre>
   </div>`;
 
-  body.insertAdjacentHTML('afterbegin', text);
+  appContainer.insertAdjacentHTML('beforeend', text);
 };
-
-// call this to generate strings
-generateEmailAddressesOrUsernames(5);
 
 export { generateRandomWords, generateEmailAddressesOrUsernames };

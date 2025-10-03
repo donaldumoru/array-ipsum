@@ -15,7 +15,9 @@ import {
  *
  *
  ****/
-const randomWords = await fetchRandomWords(randomWordsUrl, 10, 9);
+const randomWords = await fetchRandomWords(randomWordsUrl, 10, 4);
+
+console.log(randomWords);
 
 // console.log(
 //   generateRandomWords(
