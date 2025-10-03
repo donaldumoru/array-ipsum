@@ -114,7 +114,7 @@ h3 {
 }
 
 .generate-container {
-  width: 40%;
+  width: 30%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -277,6 +277,10 @@ article p {
   display: none;
 }
 
+label[for='word-length'] {
+  width: min-content;
+}
+
 /*************MEDIA QUERIES***************/
 @media only screen and (max-width: 480px) {
   nav div {
@@ -305,6 +309,11 @@ article p {
     padding-left: 2rem;
   }
 
+  .option-wrapper {
+    gap: unset;
+    justify-content: space-evenly;
+  }
+
   .radio2 {
     display: flex;
     margin-bottom: 20px;
@@ -312,5 +321,10 @@ article p {
 
   .generate-btn {
     width: unset;
+  }
+
+  .radio-container {
+    display: flex;
+    justify-content: center;
   }
 }
