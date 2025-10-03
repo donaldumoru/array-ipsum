@@ -1,6 +1,14 @@
-const INIT_COPY_FN = function () {
+const INIT_UTILS = function () {
   const copyBtn = document.querySelector('.copy-btn');
   const textToCopy = document.querySelector('code');
+  const copyrightEl = document.querySelector('.copyright');
+
+  const copyrightYear = function () {
+    const year = new Date().getFullYear();
+    copyrightEl.innerHTML = `© ${year} arrayIpsum`;
+  };
+
+  copyrightYear();
 
   const writeClipboardText = async function (code) {
     try {
@@ -11,11 +19,11 @@ const INIT_COPY_FN = function () {
     }
   };
 
-  console.log(textToCopy.textContent);
+  //   console.log(textToCopy.textContent);
 
   copyBtn.addEventListener('click', () =>
     writeClipboardText(textToCopy.textContent)
   );
 };
 
-export { INIT_COPY_FN };
+export { INIT_UTILS };
