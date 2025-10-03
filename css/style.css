@@ -194,12 +194,12 @@ pre code {
   font-weight: bold;
   padding-left: 5px;
 }
-
+/* 
 .input--amount::-webkit-inner-spin-button,
 .input--amount::-webkit-outer-spin-button {
-  transform: scale(1.5); /* try 1.2–2 */
-  transform-origin: center right; /* keep them aligned */
-}
+  transform: scale(1.5);
+  transform-origin: center right;
+} */
 /****RADIO BUTTONS*****/
 
 .radio2 {
