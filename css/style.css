@@ -158,3 +158,10 @@ main {
   transform: translateY(-50%) scale(1.1);
   border-color: var(--color-primary);
 }
+
+/*************MEDIA QUERIES***************/
+@media only screen and (max-width: 480px) {
+  nav {
+    padding: 1rem 2rem;
+  }
+}
