@@ -15,7 +15,7 @@ const renderOptions = async function (e) {
       }
     });
 
-    selectTypeToGenerate(e, e.target.dataset.identifier);
+    // selectTypeToGenerate(e, e.target.dataset.identifier);
 
     button.setAttribute('data-identifier', e.target.dataset.identifier);
   }

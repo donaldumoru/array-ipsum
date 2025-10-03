@@ -44,8 +44,8 @@ const selectTextTransformOption = function (e) {
 
 textTransformOptions.addEventListener('change', selectTextTransformOption);
 
-const selectTypeToGenerate = async function (e, identifier) {
-  const type = e.currentTarget.dataset.identifier || identifier;
+const selectTypeToGenerate = async function (e) {
+  const type = e.currentTarget.dataset.identifier;
 
   switch (type) {
     case 'words':

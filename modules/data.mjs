@@ -52,7 +52,7 @@ const fetchUserObjects = async function (numNeeded = 100) {
 
   const storedData = JSON.parse(getUserData);
 
-  console.log(storedData);
+  // console.log(storedData);
 
   return storedData;
 };
