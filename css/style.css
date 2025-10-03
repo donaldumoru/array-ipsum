@@ -111,6 +111,7 @@ h3 {
   margin: 100px 7rem;
   background-color: rgb(231, 231, 231);
   border-radius: var(--radius);
+  padding-bottom: 5rem;
 }
 
 .generate-container {
@@ -194,12 +195,12 @@ pre code {
   font-weight: bold;
   padding-left: 5px;
 }
-/* 
+
 .input--amount::-webkit-inner-spin-button,
 .input--amount::-webkit-outer-spin-button {
   transform: scale(1.5);
   transform-origin: center right;
-} */
+}
 /****RADIO BUTTONS*****/
 
 .radio2 {

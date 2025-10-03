@@ -49,6 +49,11 @@ const selectTypeToGenerate = async function (e) {
 
   switch (type) {
     case 'words':
+      if (!wordsAmount.value || !wordLength.value) {
+        wordsAmount.value = 10;
+        wordLength.value = '';
+      }
+
       generateRandomWords(
         await renderWords(+wordsAmount.value, +wordLength.value),
         textTransform
