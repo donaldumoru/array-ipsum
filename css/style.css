@@ -172,7 +172,7 @@ pre code {
 
 .option-wrapper {
   display: flex;
-  gap: 40px;
+  justify-content: space-between;
 }
 
 .option {
@@ -313,11 +313,6 @@ label[for='word-length'] {
     flex-direction: column;
     padding-right: 2rem;
     padding-left: 2rem;
-  }
-
-  .option-wrapper {
-    gap: unset;
-    justify-content: space-evenly;
   }
 
   .radio2 {
