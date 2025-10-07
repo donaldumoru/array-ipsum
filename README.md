@@ -25,7 +25,7 @@ You can generate arrays filled with strings, such as:
 
 For mocking user data and product catalogs
 
-- **User object**
+- **Example of User object**
 
 ```json
 {
@@ -44,7 +44,7 @@ For mocking user data and product catalogs
 }
 ```
 
-- **Product object**
+- **Example of Product object**
 
 ```json
 {
