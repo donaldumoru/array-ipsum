@@ -29,11 +29,18 @@ For mocking user data and product catalogs
 
 ```json
 {
-  "id": 1,
   "name": "Jane Doe",
   "age": 25,
-  "address": "123 Main St",
-  "email": "jane@example.com"
+  "address": {
+    "number": "123",
+    "street": "Main St",
+    "city": "New York",
+    "state": "New York",
+    "postcode": "10001",
+    "country": "United States"
+  },
+  "email": "jane@example.com",
+  "picture": "https://this-will-contain-a-link-to-the-image.com"
 }
 ```
 

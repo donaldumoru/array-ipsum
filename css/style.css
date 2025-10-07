@@ -145,7 +145,7 @@ h3 {
 }
 
 pre {
-  /* max-width: 100%; */
+  max-width: 100%;
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -172,8 +172,9 @@ pre code {
 }
 
 .option-wrapper {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* justify-content: space-between; */
 }
 
 .option {
@@ -260,8 +261,8 @@ pre code {
 }
 
 article {
-  margin: 0 4rem;
-  padding-bottom: 100px;
+  margin: 0 4rem 200px 4rem;
+  /* padding-bottom: 100px; */
 }
 
 article h3 {
@@ -274,7 +275,8 @@ article p {
   font-size: 1.4rem;
 }
 
-.words-option {
+.words-option,
+.objects-option {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -335,7 +337,8 @@ footer li {
   }
 
   .radio2 {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin-bottom: 20px;
   }
 

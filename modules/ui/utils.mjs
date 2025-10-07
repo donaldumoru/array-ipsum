@@ -1,7 +1,8 @@
 const INIT_UTILS = function () {
   const copyBtn = document.querySelector('.copy-btn');
-  const textToCopy = document.querySelector('code');
   const copyrightEl = document.querySelector('.copyright');
+
+  const generateBtn = document.querySelector('.generate-btn');
 
   const copyrightYear = function () {
     const year = new Date().getFullYear();
@@ -21,9 +22,10 @@ const INIT_UTILS = function () {
 
   //   console.log(textToCopy.textContent);
 
-  copyBtn.addEventListener('click', () =>
-    writeClipboardText(textToCopy.textContent)
-  );
+  copyBtn.addEventListener('click', () => {
+    const textToCopy = document.querySelector('code');
+    writeClipboardText(textToCopy.textContent);
+  });
 };
 
 export { INIT_UTILS };

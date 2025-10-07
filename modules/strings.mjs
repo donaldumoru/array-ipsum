@@ -55,6 +55,8 @@ const getSelected = populateUserArray(userData);
 const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
   const userArray = await getSelected(num);
 
+  console.log(userArray);
+
   let toRender;
 
   if (type === 'email') {

@@ -12,6 +12,7 @@
         generateRandomWords,
         generateEmailAddressesOrUsernames,
       } from '/modules/strings.mjs';
+      import { generateObjects } from '/modules/objects.mjs';
       import { numbersArray } from '/modules/integers.mjs';
       import { renderOptions } from '/modules/render-options.mjs';
       import { renderWords } from '/modules/ui/generate-array.mjs';
@@ -99,20 +100,30 @@
                 usernames
               </label>
             </div>
-            <!-- <div class="radio-button">
-              <input name="radio2-group" id="radio2-input4" type="radio" />
+            <div class="radio-button">
+              <input
+                name="radio2-group"
+                data-identifier="objects"
+                id="radio2-input4"
+                type="radio"
+              />
               <label for="radio2-input4">
+                <span></span>
+                objects
+              </label>
+            </div>
+            <div class="radio-button">
+              <input
+                name="radio2-group"
+                data-identifier="numbers"
+                id="radio2-input5"
+                type="radio"
+              />
+              <label for="radio2-input5">
                 <span></span>
                 numbers
               </label>
             </div>
-            <div class="radio-button">
-              <input name="radio2-group" id="radio2-input5" type="radio" />
-              <label for="radio2-input5">
-                <span></span>
-                objects
-              </label>
-            </div> -->
           </div>
         </div>
 
@@ -168,7 +179,7 @@
                 </div>
 
                 <div class="radio-button">
-                  <input name="word-group" id="word-input1" type="radio" />
+                  <input name="word-group" id="word-input2" type="radio" />
                   <label for="word-input1">
                     <span></span>
                     uppercase
@@ -176,7 +187,7 @@
                 </div>
 
                 <div class="radio-button">
-                  <input name="word-group" id="word-input1" type="radio" />
+                  <input name="word-group" id="word-input3" type="radio" />
                   <label for="word-input1">
                     <span></span>
                     capitalize
@@ -218,6 +229,48 @@
                   <span></span>
                   usernames
                 </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-container hide" data-identifier="objects">
+            <div class="option-wrapper">
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="objects-amount"
+                  id="objects-amount"
+                  type="number"
+                  value="1"
+                  min="1"
+                />
+                <label for="objects-amount">
+                  <span></span>
+                  objects
+                </label>
+              </div>
+
+              <div class="objects-option">
+                <div class="radio-button">
+                  <input
+                    name="object-group"
+                    id="object-input1"
+                    type="radio"
+                    checked="true"
+                  />
+                  <label for="object-input1">
+                    <span></span>
+                    user object
+                  </label>
+                </div>
+
+                <div class="radio-button">
+                  <input name="object-group" id="object-input2" type="radio" />
+                  <label for="object-input1">
+                    <span></span>
+                    product object
+                  </label>
+                </div>
               </div>
             </div>
           </div>
