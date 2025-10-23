@@ -43,7 +43,9 @@ const fetchUserObjects = async function (numNeeded = 100) {
   return storedData;
 };
 
-const userData = await fetchUserObjects();
+const userDataResponse = await fetchUserObjects();
+
+const userData = userDataResponse.results;
 
 /**
  * Creates a closure around a user array and a position counter.
@@ -59,6 +61,7 @@ const userData = await fetchUserObjects();
  *
  */
 const populateUserArray = function (arr) {
+  console.log(arr);
   let position = 0;
 
   return async function (numSelected) {
@@ -75,8 +78,6 @@ const populateUserArray = function (arr) {
     // get the number of items user requests for by slicing array from position to position + amount requested
     // slice method---> to prevent constant mutation of the array
     const selected = arr.slice(position, position + numSelected);
-
-    console.log('selected', selected);
 
     // update position to keep track of how many items have been requested from the array
     position += numSelected;
