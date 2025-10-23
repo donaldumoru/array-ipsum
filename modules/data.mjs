@@ -60,8 +60,9 @@ const userData = userDataResponse.results;
  * containing that many user objects.
  *
  */
+
+////// NEED TO FIX THE CALLS TO THIS TO BE WRAPPED IN A CLOSURE
 const populateUserArray = function (arr) {
-  console.log(arr);
   let position = 0;
 
   return async function (numSelected) {

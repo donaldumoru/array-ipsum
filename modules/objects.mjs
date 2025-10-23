@@ -10,8 +10,6 @@ const preContainer = document.querySelector('.pre-container');
 const getSelectedUserData = populateUserArray(userData);
 const getSelectedProductsData = populateProductsArray(productsData);
 
-// console.log(await getSelectedUserData(2));
-
 const generateObjects = async function (num, type = 'users') {
   let toRender;
 

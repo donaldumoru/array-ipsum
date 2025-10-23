@@ -1,4 +1,4 @@
-import { selectTypeToGenerate } from '../modules/ui/generate-array.mjs';
+// import { selectTypeToGenerate } from '../modules/ui/generate-array.mjs';
 
 const radioContainer = document.querySelector('.radio2');
 const button = document.querySelector('.generate-btn');
