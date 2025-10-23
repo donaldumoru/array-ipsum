@@ -4,6 +4,7 @@ import {
 } from '../strings.mjs';
 
 import { fetchRandomWords, randomWordsUrl } from '../fetch.mjs';
+import { renderWords } from '../data.mjs';
 import { generateObjects } from '../objects.mjs';
 
 //button
@@ -13,7 +14,9 @@ const button = document.querySelector('.generate-btn');
 const wordsAmount = document.querySelector('#word-amount');
 const wordLength = document.querySelector('#word-length');
 const textTransformOptions = document.querySelector('.words-option');
-let textTransform;
+const objectOptions = document.querySelector('.objects-option');
+
+let selectedOption;
 
 //emails
 const emailsAmount = document.querySelector('#email-amount');
@@ -22,26 +25,26 @@ const usernamesAmount = document.querySelector('#usernames-amount');
 //objects
 const objectsAmount = document.querySelector('#objects-amount');
 
-const renderWords = async function (numWords, length) {
-  const randomWords = await fetchRandomWords(randomWordsUrl, numWords, length);
-  return randomWords;
-};
-
 // Render default
 generateRandomWords(
   await renderWords(+wordsAmount.value, 10)
-
   /**if called with no second parameter, it defaults to lowercase*/
 );
 
 const selectTextTransformOption = function (e) {
   if (e.target.matches('input[type="radio"]')) {
-    // console.log(e.target.nextElementSibling.textContent.trim());
-    textTransform = e.target.nextElementSibling.textContent.trim();
+    selectedOption = e.target.nextElementSibling.textContent.trim();
+  }
+};
+textTransformOptions.addEventListener('change', selectTextTransformOption);
+
+const selectObjectsOption = function (e) {
+  if (e.target.matches('input[type="radio"]')) {
+    selectedOption = e.target.nextElementSibling.textContent.trim();
   }
 };
 
-textTransformOptions.addEventListener('change', selectTextTransformOption);
+objectOptions.addEventListener('change', selectObjectsOption);
 
 const selectTypeToGenerate = async function (e) {
   const type = e.currentTarget.dataset.identifier;
@@ -53,13 +56,12 @@ const selectTypeToGenerate = async function (e) {
       }
 
       if (!wordLength.value) {
-        console.log('omo');
         wordLength.value = '';
       }
 
       generateRandomWords(
         await renderWords(+wordsAmount.value, +wordLength.value),
-        textTransform
+        selectedOption
         /**if called with no second parameter, it defaults to lowercase*/
       );
       break;
@@ -71,8 +73,7 @@ const selectTypeToGenerate = async function (e) {
       break;
 
     case 'objects':
-      generateObjects(+objectsAmount.value);
-
+      generateObjects(+objectsAmount.value, selectedOption);
       break;
     default:
   }

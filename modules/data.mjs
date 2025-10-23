@@ -6,25 +6,17 @@
 
 import {
   fetchRandomWords,
-  randomWordsUrl,
   fetchUsers,
+  fetchProducts,
+  randomWordsUrl,
   userObjUrl,
+  productsUrl,
 } from '/modules/fetch.mjs';
 
-/****
- *
- *
- ****/
-// const randomWords = await fetchRandomWords(randomWordsUrl, 10, 4);
-
-// console.log(randomWords);
-
-// console.log(
-//   generateRandomWords(
-//     randomWords
-//     /**if called with no second parameter, it defaults to lowercase*/
-//   )
-// );
+const renderWords = async function (numWords, length) {
+  const randomWords = await fetchRandomWords(randomWordsUrl, numWords, length);
+  return randomWords;
+};
 
 /**
  * Fetches user objects either from sessionStorage (if it already exists)
@@ -40,10 +32,6 @@ const fetchUserObjects = async function (numNeeded = 100) {
   if (!sessionStorage.getItem('users')) {
     const fetchedData = await fetchUsers(userObjUrl);
 
-    //LOGS
-    console.log('data', fetchedData);
-    console.log('fecthed data length', fetchedData.length);
-
     let stringifyData = JSON.stringify(fetchedData);
     sessionStorage.setItem('users', stringifyData);
   }
@@ -51,8 +39,6 @@ const fetchUserObjects = async function (numNeeded = 100) {
   let getUserData = sessionStorage.getItem('users');
 
   const storedData = JSON.parse(getUserData);
-
-  // console.log(storedData);
 
   return storedData;
 };
@@ -84,7 +70,6 @@ const populateUserArray = function (arr) {
       arr = await fetchUserObjects();
 
       position = 0;
-      console.log('fetching again');
     }
 
     // get the number of items user requests for by slicing array from position to position + amount requested
@@ -94,11 +79,52 @@ const populateUserArray = function (arr) {
     // update position to keep track of how many items have been requested from the array
     position += numSelected;
 
-    // console.log(position, selected);
-
-    // console.log('position:', position);
     return selected;
   };
 };
 
-export { populateUserArray, userData };
+const productsData = await fetchProducts(productsUrl);
+
+/**
+ * Creates a closure around a product array and maintains a position counter.
+ *
+ * Each call to the returned function returns the next number of selected items from the array
+ * When the end of the array is reached and there's nott enough items left,
+ * it wraps around to the beginning to fulfill the request
+ *
+ * @param {Object[]} arr - The array of product objects to iterate through.
+ * @returns {(numSelected: number) => Object[]} A function that, when called with
+ * the number of items to select, returns that many products and loops back to the start if necessary.
+ *
+ */
+const populateProductsArray = function (arr) {
+  let position = 0;
+
+  return function (numSelected) {
+    if (
+      position < productsData.length &&
+      productsData.length - position >= numSelected
+    ) {
+      const selected = arr.slice(position, position + numSelected);
+      position += numSelected;
+
+      return selected;
+    } else if (productsData.length - position < numSelected) {
+      const itemsRemainingInArr = arr.slice(position, arr.length);
+      position = 0;
+      const numItemsStillNeeded = numSelected - itemsRemainingInArr.length;
+      const addedFromBeginning = arr.slice(position, numItemsStillNeeded);
+      const selected = [...itemsRemainingInArr, ...addedFromBeginning];
+
+      return selected;
+    }
+  };
+};
+
+export {
+  renderWords,
+  populateUserArray,
+  userData,
+  populateProductsArray,
+  productsData,
+};

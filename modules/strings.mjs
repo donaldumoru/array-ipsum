@@ -1,4 +1,6 @@
 import { populateUserArray, userData } from './data.mjs';
+import { renderResult } from './ui/renderResult.mjs';
+
 const preContainer = document.querySelector('.pre-container');
 
 /**
@@ -31,13 +33,7 @@ const generateRandomWords = function (
     return str;
   });
 
-  let text = `<pre>
-  <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
-    </pre>`;
-
-  preContainer.innerHTML = '';
-
-  preContainer.insertAdjacentHTML('beforeend', text);
+  renderResult(toRender, preContainer);
 };
 
 /**
@@ -55,8 +51,6 @@ const getSelected = populateUserArray(userData);
 const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
   const userArray = await getSelected(num);
 
-  console.log(userArray);
-
   let toRender;
 
   if (type === 'email') {
@@ -65,14 +59,7 @@ const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
     toRender = userArray.map(user => user?.login?.username);
   }
 
-  let text = `
-    <pre>
-      <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
-    </pre>`;
-
-  preContainer.innerHTML = '';
-
-  preContainer.insertAdjacentHTML('beforeend', text);
+  renderResult(toRender, preContainer);
 };
 
 export { generateRandomWords, generateEmailAddressesOrUsernames };

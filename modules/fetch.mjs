@@ -1,5 +1,21 @@
-let randomWordsUrl = 'https://random-word-api.vercel.app/api?words=';
-let userObjUrl = 'https://randomuser.me/api/?results=';
+const randomWordsUrl = 'https://random-word-api.vercel.app/api?words=';
+const userObjUrl = 'https://randomuser.me/api/?results=';
+const productsUrl = 'https://fakestoreapi.com/products';
+
+const fetchFunction = async function (url) {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
 
 /**
  * Fetches random words from random-word-api.vercel.app
@@ -22,18 +38,7 @@ const fetchRandomWords = async function (url, numWords = 10, length = 0) {
     url = `https://random-word-api.vercel.app/api?words=${numWords}`;
   }
 
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error(error.message);
-  }
+  return fetchFunction(url);
 };
 
 /**
@@ -44,22 +49,27 @@ const fetchRandomWords = async function (url, numWords = 10, length = 0) {
  * @param {number} [numUsers] - Number of users to fetch
  * @returns {Object[]} An array of generated dummy user objects.
  */
-
 const fetchUsers = async function (url, numUsers = 100) {
   url = url + numUsers;
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    return result.results;
-  } catch (error) {
-    console.error(error.message);
-  }
+  return fetchFunction(url);
 };
 
-export { fetchUsers, userObjUrl, fetchRandomWords, randomWordsUrl };
+/**
+ * fetches random random user objects from https://fakestoreapi.com/
+ *
+ * @async
+ * @param {string} url - Url to fetch from
+ * @returns {Object[]} An array of generated product objects
+ */
+const fetchProducts = async function (url) {
+  return fetchFunction(url);
+};
+
+export {
+  fetchUsers,
+  fetchRandomWords,
+  fetchProducts,
+  randomWordsUrl,
+  userObjUrl,
+  productsUrl,
+};

@@ -1,15 +1,20 @@
-import { populateUserArray, userData } from './data.mjs';
+import {
+  populateUserArray,
+  userData,
+  populateProductsArray,
+  productsData,
+} from './data.mjs';
+import { renderResult } from './ui/renderResult.mjs';
 const preContainer = document.querySelector('.pre-container');
 
-const getSelected = populateUserArray(userData);
+const getSelectedUserData = populateUserArray(userData);
+const getSelectedProductsData = populateProductsArray(productsData);
 
 const generateObjects = async function (num, type = 'users') {
   let toRender;
 
   if (type === 'users') {
-    const userArray = await getSelected(num);
-
-    console.log(userArray);
+    const userArray = await getSelectedUserData(num);
 
     toRender = userArray.map(user => {
       return {
@@ -27,21 +32,23 @@ const generateObjects = async function (num, type = 'users') {
         picture: user?.picture?.large,
       };
     });
+  } else if (type === 'products') {
+    const productsArray = getSelectedProductsData(num);
 
-    // toRender = users;
-  } else {
-    //// MAKE THE CALL THE FREE PRODUCT API
-    toRender = userArray.map(user => user?.login?.username);
+    toRender = productsArray.map(product => {
+      return {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        inStock: product.inStock,
+        description: product.description,
+        category: product.category,
+        image: product.image,
+      };
+    });
   }
 
-  let text = `
-    <pre>
-      <code>const arrayIpsum = ${JSON.stringify(toRender)}</code>
-    </pre>`;
-
-  preContainer.innerHTML = '';
-
-  preContainer.insertAdjacentHTML('beforeend', text);
+  renderResult(toRender, preContainer);
 };
 
 export { generateObjects };

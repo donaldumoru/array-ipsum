@@ -20,8 +20,6 @@ const INIT_UTILS = function () {
     }
   };
 
-  //   console.log(textToCopy.textContent);
-
   copyBtn.addEventListener('click', () => {
     const textToCopy = document.querySelector('code');
     writeClipboardText(textToCopy.textContent);

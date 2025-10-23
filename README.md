@@ -48,9 +48,12 @@ For mocking user data and product catalogs
 
 ```json
 {
-  "id": 101,
+  "id": 1,
   "title": "Cool Backpack",
-  "price": 59.99,
-  "inStock": true
+  "price": 99.99,
+  "inStock": true,
+  "description": "This will be a short description of the product",
+  "category": "men's clothing",
+  "image": "https://this-will-contain-a-link-to-the-image.com"
 }
 ```
