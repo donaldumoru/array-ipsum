@@ -56,8 +56,6 @@ const makeNumbersArray = makeArray();
 
 const generateRandomNumbers = function (amount, min, max) {
   const toRender = makeNumbersArray(amount, min, max);
-
-  console.log(toRender);
   renderResult(toRender, preContainer);
 };
 

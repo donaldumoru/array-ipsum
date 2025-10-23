@@ -76,6 +76,8 @@ const populateUserArray = function (arr) {
     // slice method---> to prevent constant mutation of the array
     const selected = arr.slice(position, position + numSelected);
 
+    console.log('selected', selected);
+
     // update position to keep track of how many items have been requested from the array
     position += numSelected;
 
