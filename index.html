@@ -13,7 +13,7 @@
         generateEmailAddressesOrUsernames,
       } from '/modules/strings.mjs';
       import { generateObjects } from '/modules/objects.mjs';
-      import { numbersArray } from '/modules/integers.mjs';
+      // import { makeNumbersArray } from '/modules/integers.mjs';
       import { renderOptions } from '/modules/render-options.mjs';
       import { renderWords } from '/modules/ui/generate-array.mjs';
       import { INIT_UTILS } from '/modules/ui/utils.mjs';
@@ -88,6 +88,7 @@
                 emails
               </label>
             </div>
+
             <div class="radio-button">
               <input
                 data-identifier="usernames"
@@ -100,6 +101,7 @@
                 usernames
               </label>
             </div>
+
             <div class="radio-button">
               <input
                 name="radio2-group"
@@ -112,6 +114,7 @@
                 objects
               </label>
             </div>
+
             <div class="radio-button">
               <input
                 name="radio2-group"
@@ -275,24 +278,53 @@
             </div>
           </div>
 
-          <!-- <div class="option-container">
+          <div class="option-container hide" data-identifier="numbers">
             <div class="option-wrapper">
               <div class="option">
                 <input
                   class="input--amount"
-                  name="usernames-amount"
-                  id="usernames-amount"
+                  name="numbers-amount"
+                  id="numbers-amount"
+                  type="number"
+                  value="1"
+                  min="1"
+                  max="100"
+                />
+                <label for="numbers-amount">
+                  <span></span>
+                  amount
+                </label>
+              </div>
+
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="numbers-min"
+                  id="numbers-min"
                   type="number"
                   value="1"
                 />
-                <label for="usernames-amount">
+                <label for="numbers-min">
                   <span></span>
-                  numbers
+                  min
+                </label>
+              </div>
+
+              <div class="option">
+                <input
+                  class="input--amount"
+                  name="numbers-max"
+                  id="numbers-max"
+                  type="number"
+                  value="1"
+                />
+                <label for="numbers-max">
+                  <span></span>
+                  max
                 </label>
               </div>
             </div>
-            <button>generate</button>
-          </div> -->
+          </div>
 
           <button class="generate-btn" data-identifier="words">generate</button>
         </div>

@@ -2,10 +2,9 @@ import {
   generateRandomWords,
   generateEmailAddressesOrUsernames,
 } from '../strings.mjs';
-
-import { fetchRandomWords, randomWordsUrl } from '../fetch.mjs';
 import { renderWords } from '../data.mjs';
 import { generateObjects } from '../objects.mjs';
+import { generateRandomNumbers } from '../integers.mjs';
 
 //button
 const button = document.querySelector('.generate-btn');
@@ -24,6 +23,10 @@ const emailsAmount = document.querySelector('#email-amount');
 const usernamesAmount = document.querySelector('#usernames-amount');
 //objects
 const objectsAmount = document.querySelector('#objects-amount');
+//numbers
+const numbersAmount = document.querySelector('#numbers-amount');
+const numbersMinimum = document.querySelector('#numbers-min');
+const numbersMaximum = document.querySelector('#numbers-max');
 
 // Render default
 generateRandomWords(
@@ -74,6 +77,14 @@ const selectTypeToGenerate = async function (e) {
 
     case 'objects':
       generateObjects(+objectsAmount.value, selectedOption);
+      break;
+
+    case 'numbers':
+      generateRandomNumbers(
+        +numbersAmount.value,
+        +numbersMinimum.value,
+        +numbersMaximum.value
+      );
       break;
     default:
   }

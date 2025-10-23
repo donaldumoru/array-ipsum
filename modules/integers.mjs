@@ -1,3 +1,6 @@
+import { renderResult } from './ui/renderResult.mjs';
+const preContainer = document.querySelector('.pre-container');
+
 /**
  * Generates a random integer between min and max integer
  *
@@ -17,7 +20,7 @@ const randomNum = function (min, max) {
  * A function that, when called, generates an array of random numbers.
  */
 const makeArray = function () {
-  const numbers = [];
+  let numbers = [];
 
   /**
    * Generates an array of random integers of the given amount,
@@ -29,6 +32,7 @@ const makeArray = function () {
    * @returns {number[]} An array of random integers.
    */
   return function (amount, min, max) {
+    numbers = [];
     /**
      * Recursively fills the `numbers` array until `amount` reaches 0.
      *
@@ -48,9 +52,13 @@ const makeArray = function () {
   };
 };
 
-const numbersArray = makeArray();
+const makeNumbersArray = makeArray();
 
-// call this to generate numbers
-// console.log(numbersArray(12, 1, 20));
+const generateRandomNumbers = function (amount, min, max) {
+  const toRender = makeNumbersArray(amount, min, max);
 
-export { numbersArray };
+  console.log(toRender);
+  renderResult(toRender, preContainer);
+};
+
+export { generateRandomNumbers };
