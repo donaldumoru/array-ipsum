@@ -129,7 +129,7 @@ h3 {
 
 .code-display {
   background-color: var(--color-primary);
-  color: var(--strings);
+  /* color: var(--strings); */
   margin: 5rem 2rem;
   border-radius: var(--radius);
   position: relative;
@@ -154,6 +154,7 @@ pre {
   max-height: 60vh;
   overflow: auto;
   position: relative;
+  background-color: var(--color-primary) !important;
 }
 
 pre code {
@@ -161,6 +162,7 @@ pre code {
   display: block;
   line-height: 2.5;
   margin-top: 2rem;
+  color: rgb(231, 231, 231) !important;
 }
 
 /************FORM FIELDS*************/

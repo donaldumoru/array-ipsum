@@ -7,15 +7,19 @@
  * @returns {void}
  */
 
+const codeBlock = document.querySelector('code');
+const preContainer = document.querySelector('pre');
+
 const renderResult = function (result, container) {
-  let text = `
-    <pre>
-      <code>const arrayIpsum = ${JSON.stringify(result)}</code>
-    </pre>`;
+  codeBlock.textContent = `const arrayIpsum = ${JSON.stringify(
+    result,
+    null,
+    2
+  )}`;
 
-  container.innerHTML = '';
-
-  container.insertAdjacentHTML('beforeend', text);
+  preContainer.append(codeBlock);
+  container.append(preContainer);
+  Prism.highlightElement(codeBlock);
 };
 
 export { renderResult };
