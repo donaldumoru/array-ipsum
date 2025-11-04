@@ -1,3 +1,6 @@
+const codeBlock = document.querySelector('code');
+const preContainer = document.querySelector('pre');
+
 /**
  * render the results on the page
  *
@@ -6,10 +9,6 @@
  *
  * @returns {void}
  */
-
-const codeBlock = document.querySelector('code');
-const preContainer = document.querySelector('pre');
-
 const renderResult = function (result, container) {
   codeBlock.textContent = `const arrayIpsum = ${JSON.stringify(
     result,

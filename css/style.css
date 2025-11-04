@@ -135,15 +135,6 @@ h3 {
   position: relative;
 }
 
-.copy-btn {
-  position: absolute;
-  top: 15px;
-  right: 2rem;
-  padding: 5px 20px;
-  cursor: pointer;
-  z-index: 1;
-}
-
 pre {
   max-width: 100%;
   white-space: pre-wrap;
@@ -162,7 +153,37 @@ pre code {
   display: block;
   line-height: 2.5;
   margin-top: 2rem;
-  color: rgb(231, 231, 231) !important;
+  color: #f7f7f7 !important;
+}
+
+.toast-notification {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #f7f7f7;
+  border: 0.5px solid #01b500;
+  z-index: 1;
+  right: 20px;
+  top: 60px;
+  transition: 0.3s ease-in-out;
+  background-color: var(--color-primary);
+  opacity: 0;
+  font-size: 0.8rem;
+}
+
+.show-notif {
+  opacity: 1;
+}
+
+.toast-notification > img:first-child {
+  padding: 8px;
+  background-color: #01b500;
+}
+
+.toast-notification img {
+  max-width: 25px;
 }
 
 /************FORM FIELDS*************/
@@ -184,11 +205,61 @@ pre code {
   flex-direction: column;
 }
 
-.generate-btn {
-  width: fit-content;
-  padding: 1rem 2rem;
+.copy-btn {
+  position: absolute;
+  top: 15px;
+  right: 2rem;
+  padding: 5px 20px;
   cursor: pointer;
+  z-index: 1;
+  border: none;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+}
+
+.copy-btn:hover {
+  transform: scale(1.01);
+}
+
+.generate-btn {
+  padding: 1rem 2rem;
   margin-top: 20px;
+  width: fit-content;
+  height: auto;
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: var(--color-primary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.generate-btn:hover {
+  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.562);
+  transform: scale(1.01);
+  box-shadow: inset 0px 0px 10px rgb(59, 59, 59);
+}
+
+.generate-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 50%;
+  height: 100%;
+  transform: rotate(80deg);
+  background-color: #ffffff77;
+  filter: blur(10px);
+  transition: 0.6s ease-in-out;
+}
+
+.generate-btn:hover::after {
+  left: 100%;
 }
 
 .input--amount {

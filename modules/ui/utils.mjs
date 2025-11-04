@@ -1,8 +1,7 @@
 const INIT_UTILS = function () {
   const copyBtn = document.querySelector('.copy-btn');
   const copyrightEl = document.querySelector('.copyright');
-
-  const generateBtn = document.querySelector('.generate-btn');
+  const toastNotification = document.querySelector('.toast-notification');
 
   const copyrightYear = function () {
     const year = new Date().getFullYear();
@@ -11,10 +10,14 @@ const INIT_UTILS = function () {
 
   copyrightYear();
 
+  const displayToastNotification = function () {
+    toastNotification.classList.toggle('show-notif');
+    setTimeout(() => toastNotification.classList.toggle('show-notif'), 1000);
+  };
+
   const writeClipboardText = async function (code) {
     try {
       await navigator.clipboard.writeText(code);
-      console.log('copied', code);
     } catch (error) {
       console.error(error.message);
     }
@@ -23,6 +26,7 @@ const INIT_UTILS = function () {
   copyBtn.addEventListener('click', () => {
     const textToCopy = document.querySelector('code');
     writeClipboardText(textToCopy.textContent);
+    displayToastNotification();
   });
 };
 
