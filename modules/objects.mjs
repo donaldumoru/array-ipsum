@@ -1,13 +1,13 @@
 import {
   populateUserArray,
-  userData,
+  // userData,
   populateProductsArray,
   productsData,
 } from './data.mjs';
 import { renderResult } from './ui/renderResult.mjs';
 const preContainer = document.querySelector('.pre-container');
 
-const getSelectedUserData = populateUserArray(userData);
+// const getSelectedUserData = populateUserArray(userData);
 const getSelectedProductsData = populateProductsArray(productsData);
 
 const generateObjects = async function (num, type = 'users') {

@@ -43,9 +43,9 @@ const fetchUserObjects = async function (numNeeded = 100) {
   return storedData;
 };
 
-const userDataResponse = await fetchUserObjects();
+// const userDataResponse = await fetchUserObjects();
 
-const userData = userDataResponse.results;
+// const userData = userDataResponse.results;
 
 /**
  * Creates a closure around a user array and a position counter.
@@ -128,7 +128,7 @@ const populateProductsArray = function (arr) {
 export {
   renderWords,
   populateUserArray,
-  userData,
+  // userData,
   populateProductsArray,
   productsData,
 };

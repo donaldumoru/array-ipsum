@@ -1,4 +1,5 @@
-const randomWordsUrl = 'https://random-word-api.vercel.app/api?words=';
+// const randomWordsUrl = 'https://random-word-api.vercel.app/api?words=';
+const randomWordsUrl = 'https://random-word-api.herokuapp.com/word?number=';
 const userObjUrl = 'https://randomuser.me/api/?results=';
 const productsUrl = 'https://fakestoreapi.com/products';
 
@@ -33,9 +34,9 @@ const fetchRandomWords = async function (url, numWords = 10, length = 0) {
 
   // check if length of words meet random-word-api criteria and set the url based on length specified
   if (length > 2 && length <= 9) {
-    url = `https://random-word-api.vercel.app/api?words=${numWords}&length=${length}`;
+    url = `https://random-word-api.herokuapp.com/word?number=${numWords}&length=${length}`;
   } else {
-    url = `https://random-word-api.vercel.app/api?words=${numWords}`;
+    url = `https://random-word-api.herokuapp.com/word?number=${numWords}`;
   }
 
   return fetchFunction(url);

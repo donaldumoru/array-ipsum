@@ -30,7 +30,7 @@ const numbersMaximum = document.querySelector('#numbers-max');
 
 // Render default
 generateRandomWords(
-  await renderWords(+wordsAmount.value, 10)
+  await renderWords(+wordsAmount.value, 10),
   /**if called with no second parameter, it defaults to lowercase*/
 );
 
@@ -64,7 +64,7 @@ const selectTypeToGenerate = async function (e) {
 
       generateRandomWords(
         await renderWords(+wordsAmount.value, +wordLength.value),
-        selectedOption
+        selectedOption,
         /**if called with no second parameter, it defaults to lowercase*/
       );
       break;
@@ -83,7 +83,7 @@ const selectTypeToGenerate = async function (e) {
       generateRandomNumbers(
         +numbersAmount.value,
         +numbersMinimum.value,
-        +numbersMaximum.value
+        +numbersMaximum.value,
       );
       break;
     default:

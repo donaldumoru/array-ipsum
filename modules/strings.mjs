@@ -1,4 +1,4 @@
-import { populateUserArray, userData } from './data.mjs';
+// import { populateUserArray, userData } from './data.mjs';
 import { renderResult } from './ui/renderResult.mjs';
 
 const preContainer = document.querySelector('.pre-container');
@@ -13,7 +13,7 @@ const preContainer = document.querySelector('.pre-container');
  */
 const generateRandomWords = function (
   arr,
-  stringTransformOption = 'lowercase'
+  stringTransformOption = 'lowercase',
 ) {
   const toRender = arr.map(str => {
     switch (stringTransformOption) {
@@ -46,7 +46,7 @@ const generateRandomWords = function (
  * @returns {void}
  */
 
-const getSelected = populateUserArray(userData);
+// const getSelected = populateUserArray(userData);
 
 const generateEmailAddressesOrUsernames = async function (num, type = 'email') {
   const userArray = await getSelected(num);
